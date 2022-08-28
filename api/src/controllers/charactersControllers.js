@@ -1,9 +1,11 @@
 const axios = require("axios");
 // const server  = require('../app')
 
-async function getCharacters(req, res) {
+async function getCharacters(page) {
   try {
-    const characters = await axios("https://swapi.dev/api/people/");
+    
+
+    const characters = await axios(`https://swapi.dev/api/people/?page=${page}`);
     const info = characters.data.results;
     const charMap = await Promise.all(
       info?.map(async (e) => {

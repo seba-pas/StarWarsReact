@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getCharacterById, setCharacter } from "../../Redux/Actions";
+import ClipLoader from "react-spinners/ClipLoader";
+
 import "./Details.scss";
 
 const Details = () => {
@@ -10,6 +12,8 @@ const Details = () => {
   const character = useSelector((state) => state.character);
   const history = useHistory();
   const gState = useSelector((state) => state);
+  let [color, setColor] = useState("#000")
+  
 
   //manage url for image
   let imgUrlSplit = character?.url?.split("/");
@@ -40,7 +44,9 @@ films, homeworld, species, starships, vehicles+
         {!!img && idFromUrl !== undefined ? (
           <img src={img} alt="no img" />
         ) : (
-          "loading img..."
+         <div className='spinnerImg'>
+          <ClipLoader color={color} size={150} />
+         </div>
         )}
       </div>
 
@@ -87,7 +93,9 @@ films, homeworld, species, starships, vehicles+
           </button>
         </div>
       ) : (
-        "Loading..."
+        <div className='spinnerInfo'>
+          <ClipLoader color={color} size={150} />
+         </div>
       )}
     </div>
   );

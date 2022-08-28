@@ -8,7 +8,11 @@ const {
 const router = Router();
 
 router.get("/", async (req, res) => {
-  let allCharacters = await getCharacters();
+let page = req.query.page
+if(!page){page = 1
+
+}
+  let allCharacters = await getCharacters(page);
   res.status(200).json(allCharacters);
 });
 
