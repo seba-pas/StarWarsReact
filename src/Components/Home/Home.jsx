@@ -10,7 +10,7 @@ export default function Home() {
   useEffect(() => {
     dispatch(getCharacters());
   }, [dispatch]);
-  console.log(characters)
+  // console.log(characters)
 
   return (
     <div>{characters ? <Cards currentChars={characters} /> : "Loading..."}</div>

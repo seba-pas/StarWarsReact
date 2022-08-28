@@ -3,6 +3,9 @@
     flex-wrap: wrap;
     justify-content: space-between;
     text-decoration:none;
+    border: 1px;
+    border-color: black;
+    margin: 2rem;
 }
 
 @media screen and (max-width: 1000px) {

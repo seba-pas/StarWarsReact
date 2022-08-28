@@ -1,4 +1,18 @@
 .container {
     display: flex;
+    flex-direction: row;
+    img {
+        height: auto;
+        width: 20rem;
+    }
+    .info {
+
+        margin-left: 2rem;
+    }
+    .back {
+        background-color: black;
+        color: white;
+        
+    }
     
 }

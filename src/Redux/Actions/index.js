@@ -19,5 +19,13 @@ export function getCharacterById(id) {
       type: "GET_CHARACTER_BY_ID",
       payload: json.data,
     });
-  };
+  }
 }
+
+export function setCharacter(){
+    return async function(dispatch) {
+      return dispatch({
+        type: 'SET_CHARACTER'
+      })
+    }
+  }

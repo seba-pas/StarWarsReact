@@ -16,10 +16,15 @@ export default function rootReducer(state = initialState, action) {
           ...state,
           character: action.payload
         }
+        case 'SET_CHARACTER':
+          return  {
+            ...state,
+            character: {}
+          }
 
     default:
       return {
-        ...state,
+        ...state
       };
   }
 }
