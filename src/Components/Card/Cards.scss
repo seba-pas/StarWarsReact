@@ -1,0 +1,14 @@
+.tarjeta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-decoration:none;
+}
+
+@media screen and (max-width: 1000px) {
+    .tarjeta {
+        flex-direction: column;
+    }
+    
+
+}
