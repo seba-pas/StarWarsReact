@@ -19,6 +19,9 @@ const Details = () => {
   }, [dispatch, id]);
 
   console.log(character);
+  /*
+films, homeworld, species, starships, vehicles+
+  */
 
   return (
     <div className="container">
@@ -27,6 +30,14 @@ const Details = () => {
       ) : (
         "loading img..."
       )}
+      <h1>{character.name}</h1>
+      <h3>birth_year: {character.birth_year}</h3>
+      <h3>gender:{character.gender}</h3>
+      <h3>eye_color: {character.eye_color}</h3>
+      <h3>hair_color:{character.hair_color}</h3>
+      <h3>mass: {character.mass}</h3>
+      <h3>height: {character.height}</h3>
+      <h3>skin_color{character.skin_color}</h3>
     </div>
   );
 };
