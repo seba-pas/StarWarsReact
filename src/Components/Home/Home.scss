@@ -1,0 +1,18 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  .cards {
+    height: 80%;
+  }
+  .pages {
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    z-index: 9999;
+
+    height: 19%;
+    margin: 0 auto;
+  }
+}
+
+

@@ -1,30 +1,48 @@
 const initialState = {
   characters: [],
-  character: {}
+  character: {},
+  allCharacters: [],
+  starships: [],
+  starship: {} 
 };
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case "GET_CHARACTERS":
-        
       return {
         ...state,
         characters: action.payload,
       };
-      case "GET_CHARACTER_BY_ID":
+    case "GET_ALL_CHARACTERS":
+      return {
+        ...state,
+        allCharacters: action.payload,
+      };
+
+    case "GET_CHARACTER_BY_ID":
+      return {
+        ...state,
+        character: action.payload,
+      };
+    case "SET_CHARACTER":
+      return {
+        ...state,
+        character: {},
+      };
+      case 'GET_STARSHIP_BY_ID':
         return {
           ...state,
-          character: action.payload
+          starship: action.payload
         }
-        case 'SET_CHARACTER':
-          return  {
+        case 'GET_ALL_STARSHIPS':
+          return {
             ...state,
-            character: {}
+            starships: action.payload
           }
 
     default:
       return {
-        ...state
+        ...state,
       };
   }
 }

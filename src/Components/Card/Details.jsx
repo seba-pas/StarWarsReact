@@ -7,8 +7,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 import "./Details.scss";
 
 const Details = () => {
-  const dispatch = useDispatch();
   const { id } = useParams();
+  const dispatch = useDispatch();
   const character = useSelector((state) => state.character);
   const history = useHistory();
   const gState = useSelector((state) => state);
@@ -22,7 +22,6 @@ const Details = () => {
   const img = `${baseImgUrl}${idFromUrl}.jpg`;
 
   //manage url for starships
-
   useEffect(() => {
     dispatch(getCharacterById(id));
     return () => {
@@ -37,6 +36,7 @@ films, homeworld, species, starships, vehicles+
   const starships = char.starships? char.starships : 'n/a';
   const vehicles = char.vehicles? char.vehicles : 'n/a';
   const films = char.films;
+  const homeworld = char.homeworld
 
   return (
     <div className="container">
@@ -84,6 +84,9 @@ films, homeworld, species, starships, vehicles+
           </div>
           <div>
             <h3>films {films.join(', ')}</h3>
+          </div>
+          <div>
+            <h3>Homeworld {homeworld}</h3>
           </div>
           <div>
             <h3>vehicles: {vehicles.join(', ')}</h3>

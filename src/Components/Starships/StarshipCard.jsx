@@ -1,23 +1,25 @@
 import React from "react";
-import "./Card.scss";
+import "./starshipCard.scss";
 import { Link } from "react-router-dom";
 
-
-export default function Card({ name, image, homeworld, id }) {
-
+export default function starshipCard({ name, image, credits, id }) {
   return (
-    <Link to={`/characters/${id}`}>
+    <Link to={`/starships/${id}`}>
       <div className="container_card">
-        <div className='container_img'>
-          <img src={image} alt="no-img" onError={(e) => {
+        <div className="container_img">
+          <img
+            src={image}
+            alt="no-img"
+            onError={(e) => {
               e.target.onerror = null;
               e.target.src =
                 "https://starwars-visualguide.com/assets/img/placeholder.jpg";
-            }}/>
+            }}
+          />
         </div>
         <div className="text">
           <h1>{name}</h1>
-          <h4>{homeworld}</h4>
+          <h4>{credits}</h4>
         </div>
       </div>
     </Link>

@@ -1,11 +1,36 @@
 const axios = require("axios");
 // const server  = require('../app')
 
+async function getHomePageCharacters(page) {
+  try {
+    const characters = await axios(
+      `https://swapi.dev/api/people/?page=${page}`
+    );
+    const info = characters.data.results;
+    const charMap = info?.map((e) => {
+      let imgUrlSplit = e.url.split("/");
+      let idFromUrl = imgUrlSplit[imgUrlSplit.length - 2];
+      let baseImgUrl =
+        "https://starwars-visualguide.com/assets/img/characters/";
+
+      return {
+        id: parseInt(idFromUrl),
+        name: e.name,
+        image: baseImgUrl + `${idFromUrl}.jpg`,
+        homeworld: e.homeworld
+      };
+    });
+    return charMap;
+  } catch (error) {
+    console.log("error en homepage char", error);
+  }
+}
+
 async function getCharacters(page) {
   try {
-    
-
-    const characters = await axios(`https://swapi.dev/api/people/?page=${page}`);
+    const characters = await axios(
+      `https://swapi.dev/api/people/?page=${page}`
+    );
     const info = characters.data.results;
     const charMap = await Promise.all(
       info?.map(async (e) => {
@@ -33,13 +58,12 @@ async function getCharacters(page) {
             return allStarships.data.name;
           })
         );
-        //split
-        let imgUrlSplit = e.url.split("/");
-        //id
-        let idFromUrl = imgUrlSplit[imgUrlSplit.length - 2];
 
+        let imgUrlSplit = e.url.split("/");
+        let idFromUrl = imgUrlSplit[imgUrlSplit.length - 2];
         let baseImgUrl =
           "https://starwars-visualguide.com/assets/img/characters/";
+
         return {
           id: parseInt(idFromUrl),
           name: e.name,
@@ -65,7 +89,7 @@ async function getCharacterById(id) {
     const searchCharacter = await axios.get(
       `https://swapi.dev/api/people/${id}`
     );
-   
+
     return searchCharacter.data;
   } catch (error) {
     console.log("error en get by id", error);
@@ -75,4 +99,5 @@ async function getCharacterById(id) {
 module.exports = {
   getCharacters,
   getCharacterById,
+  getHomePageCharacters
 };
